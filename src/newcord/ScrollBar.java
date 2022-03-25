@@ -15,7 +15,7 @@ public class ScrollBar extends BasicScrollBarUI {
 	private final Dimension dim = new Dimension();
 
 	public void setTrackColor(Color c) {
-
+		
 	}
 
 	public void setThumbColor(Color c) {
