@@ -85,27 +85,35 @@ public class Newcord extends JFrame {
 		//serverPanel.setLayout(grid);
 		serverPanel.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.insets = new Insets(0, 0, 20, 0);
 		JPanel homePanel = new JPanel();
-		HomeProfile dmProfile = new HomeProfile();
+
+		JLabel pusherLabel = new JLabel("...");
 		gbc.gridx = 0;
 		gbc.gridy = 0;
+		serverPanel.add(pusherLabel, gbc);
+		pusherLabel.setPreferredSize(new Dimension(106, 20));
+		
+		HomeProfile dmProfile = new HomeProfile();
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		gbc.insets = new Insets(0, 0, 10, 0);
 		serverPanel.add(dmProfile, gbc);
 		//JSeparator sep = new JSeparator();
 		//sep.setBackground(new Color(255, 255, 255));
-		JLabel splitLabel = new JLabel("——————", SwingConstants.CENTER);
+		JLabel splitLabel = new JLabel("—————", SwingConstants.CENTER);
 		splitLabel.setPreferredSize(new Dimension(106, 20));
 		splitLabel.setForeground(new Color(85, 87, 90));
 		//splitLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		gbc.gridx = 0;
-		gbc.gridy = 1;
+		gbc.gridy = 2;
+		gbc.insets = new Insets(0, 0, 20, 0);
 		serverPanel.add(splitLabel, gbc);
 		LinkedList<ServerProfile>serverProfiles = new LinkedList<ServerProfile>();
 		for(int i = 0; i < 100; i++) {
 			ServerProfile sp = new ServerProfile(new ImageIcon("servericon").getImage(), "ID");
 			serverProfiles.add(sp);
 			gbc.gridx = 0;
-			gbc.gridy = 2+i*2;
+			gbc.gridy = 3+i*2;
 			serverPanel.add(sp, gbc);
 		}
 
