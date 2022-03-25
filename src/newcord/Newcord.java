@@ -43,8 +43,10 @@ public class Newcord extends JFrame {
 		logoLabel.setForeground(new Color(114, 118, 125));
 
 		JLabel closeButton = new JLabel("x");
-		JLabel fullscreenButton = new JLabel("");
-		JLabel minimizeButton = new JLabel();
+		closeButton.setSize(50, 30);
+		closeButton.setLocation(getWidth()-closeButton.getWidth(), 0);
+		JLabel fullscreenButton = new JLabel("â–¡");
+		JLabel minimizeButton = new JLabel("â€”");
 
 		viewPanel.setLayout(null);
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -75,12 +77,13 @@ public class Newcord extends JFrame {
 		serverScrollPane.getHorizontalScrollBar().setPreferredSize(new Dimension(0, 0));
 		serverScrollPane.getViewport().setScrollMode(JViewport.BACKINGSTORE_SCROLL_MODE);
 		serverScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		serverScrollPane.setLocation(29, 50);
+		serverScrollPane.setLocation(30, 50);
 		serverScrollPane.setSize(106, getHeight()-50);
 		serverScrollPane.setOpaque(true);
 		serverScrollPane.setBorder(null);
 		serverPanel.setBackground(viewPanel.getBackground());
 
+		serverScrollPane.getVerticalScrollBar().setv.getValue()
 		//GridLayout grid = new GridLayout(0, 1, 0, 10);
 		//serverPanel.setLayout(grid);
 		serverPanel.setLayout(new GridBagLayout());
@@ -92,14 +95,14 @@ public class Newcord extends JFrame {
 		gbc.gridy = 0;
 		gbc.insets = new Insets(0, 0, 10, 0);
 		serverPanel.add(dmProfile, gbc);
-		JLabel splitLabel = new JLabel("————", SwingConstants.CENTER);
+		JLabel splitLabel = new JLabel("â€”â€”â€”â€”", SwingConstants.CENTER);
 		splitLabel.setPreferredSize(new Dimension(106, 20));
 		splitLabel.setForeground(new Color(85, 87, 90));
 		splitLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.insets = new Insets(0, 0, 20, 0);
-		serverPanel.add(splitLabel, gbc);
+		//serverPanel.add(splitLabel, gbc);
 		LinkedList<ServerProfile>serverProfiles = new LinkedList<ServerProfile>();
 		int i = 2;
 		while(i < 12) {
@@ -107,19 +110,19 @@ public class Newcord extends JFrame {
 			serverProfiles.add(sp);
 			gbc.gridx = 0;
 			gbc.gridy = i;
-			serverPanel.add(sp, gbc);
+			//serverPanel.add(sp, gbc);
 			i++;
 		}
 		i++;
 		AddServerProfile addServerProfile = new AddServerProfile();
 		gbc.gridx = 0;
 		gbc.gridy = i+1;
-		serverPanel.add(addServerProfile, gbc);
+		//serverPanel.add(addServerProfile, gbc);
 		
 		ExploreProfile exploreProfile = new ExploreProfile();
 		gbc.gridx = 0;
 		gbc.gridy = i+2;
-		serverPanel.add(exploreProfile, gbc);
+		//serverPanel.add(exploreProfile, gbc);
 		
 
 		JScrollPane friendsScrollPane = new JScrollPane();
