@@ -14,17 +14,17 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 public class ScrollBar extends BasicScrollBarUI {
 	private final Dimension dim = new Dimension();
 
-	public void setTrackColor(Color c) {
-		
-	}
-
-	public void setThumbColor(Color c) {
-
-	}
+	private Color trackColor = Color.LIGHT_GRAY;
+	private Color thumbColor = Color.GRAY;
 
 	@Override
 	protected JButton createDecreaseButton(int orientation) {
 		return new JButton() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public Dimension getPreferredSize() {
 				return dim;
@@ -35,6 +35,11 @@ public class ScrollBar extends BasicScrollBarUI {
 	@Override
 	protected JButton createIncreaseButton(int orientation) {
 		return new JButton() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public Dimension getPreferredSize() {
 				return dim;
@@ -46,9 +51,9 @@ public class ScrollBar extends BasicScrollBarUI {
 	protected void paintTrack(Graphics g, JComponent c, Rectangle r) {
 		Graphics2D g2 = (Graphics2D) g.create();
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g2.setPaint(Color.LIGHT_GRAY);
+		g2.setPaint(trackColor);
 		g2.fillRoundRect(r.x, r.y, r.width, r.height, r.width, r.width);
-		g2.setPaint(Color.LIGHT_GRAY);
+		g2.setPaint(trackColor);
 		g2.drawRoundRect(r.x, r.y, r.width, r.height, r.width, r.width);
 		g2.dispose();
 	}
@@ -57,9 +62,9 @@ public class ScrollBar extends BasicScrollBarUI {
 	protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
 		Graphics2D g2 = (Graphics2D) g.create();
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g2.setPaint(Color.GRAY);
+		g2.setPaint(thumbColor);
 		g2.fillRoundRect(r.x, r.y, r.width, r.height, r.width, r.width);
-		g2.setPaint(Color.GRAY);
+		g2.setPaint(thumbColor);
 		g2.drawRoundRect(r.x, r.y, r.width, r.height, r.width, r.width);
 		g2.dispose();
 	}
