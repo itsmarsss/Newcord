@@ -113,7 +113,7 @@ public class Newcord extends JFrame  {
 		minimizeButton.setOpaque(true);
 		minimizeButton.setLocation(fullscreenButton.getX()-minimizeButton.getWidth(), 0);
 		minimizeButton.addMouseListener(new WindowButtonListener(
-				WindowButtonListener.FRAME_FULLSCREEN, 
+				WindowButtonListener.FRAME_MINIMIZE, 
 				new Color(40, 43, 46), 
 				new Color(190, 191, 193), 
 				new Color(43, 46, 50), 
