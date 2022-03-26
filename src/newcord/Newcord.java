@@ -37,6 +37,7 @@ public class Newcord extends JFrame  {
 		setSize(2560, 1440);
 		setUndecorated(true);
 		setMinimumSize(new Dimension(1880, 1000));
+
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((int)screenDim.getWidth()/2-getWidth()/2, (int)screenDim.getHeight()/2-getHeight()/2);
 		
@@ -45,6 +46,7 @@ public class Newcord extends JFrame  {
 		viewPanel.setLayout(null);
 		viewPanel.setBackground(new Color(32, 34, 37));
 		viewPanel.setSize(getWidth(), 50);
+		viewPanel.setLayout(null);
 		
 		viewPanel.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e){
@@ -65,7 +67,7 @@ public class Newcord extends JFrame  {
 		JLabel logoLabel = new JLabel("Newcord");
 		logoLabel.setLocation(18, 10);
 		logoLabel.setSize(130, 30);
-		logoLabel.setFont(new Font("SansSerif", Font.BOLD, 30));
+		logoLabel.setFont(new Font("Whitney", Font.BOLD, 30));
 		logoLabel.setForeground(new Color(114, 118, 125));
 		
 		viewPanel.add(logoLabel);
@@ -148,7 +150,7 @@ public class Newcord extends JFrame  {
 		gbc.gridy = 0;
 		gbc.insets = new Insets(10, 0, 10, 0);
 		serverPanel.add(dmProfile, gbc);
-		
+
 		JLabel splitLabel = new JLabel("————", SwingConstants.CENTER);
 		splitLabel.setPreferredSize(new Dimension(106, 20));
 		splitLabel.setForeground(new Color(85, 87, 90));
@@ -180,16 +182,18 @@ public class Newcord extends JFrame  {
 		gbc.gridy = i+2;
 		gbc.insets = new Insets(0, 0, 30, 0);
 		serverPanel.add(exploreProfile, gbc);
+
+		//serverPanel.add(exploreProfile, gbc);
 		
 		viewPanel.add(serverScrollPane);
 		
 		// Friend list panel
 		JScrollPane friendsScrollPane = new JScrollPane();
-		friendsScrollPane.getVerticalScrollBar().setUI(new ScrollBar());
+		friendsScrollPane.getVerticalScrollBar().setUI(new ScrollBar(new Color(47, 49, 54), new Color(32, 34, 37)));
 
 		// Channel list panel
 		JScrollPane channelScrollPane = new JScrollPane();
-		channelScrollPane.getVerticalScrollBar().setUI(new ScrollBar());
+		channelScrollPane.getVerticalScrollBar().setUI(new ScrollBar(new Color(47, 49, 54), new Color(32, 34, 37)));
 
 
 		setVisible(true);

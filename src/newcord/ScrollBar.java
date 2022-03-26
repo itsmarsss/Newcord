@@ -17,6 +17,10 @@ public class ScrollBar extends BasicScrollBarUI {
 	private Color trackColor = Color.LIGHT_GRAY;
 	private Color thumbColor = Color.GRAY;
 
+	public ScrollBar(Color trackColor, Color thumbColor) {
+		this.trackColor = trackColor;
+		this.thumbColor = thumbColor;
+	}
 	@Override
 	protected JButton createDecreaseButton(int orientation) {
 		return new JButton() {
