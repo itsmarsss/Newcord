@@ -46,13 +46,13 @@ public class WindowButtonListener implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		switch(perform) {
 		case FRAME_CLOSE:
-			Newcord.newcord.setVisible(false);
+			Newcord.frame.setVisible(false);
 			break;
 		case FRAME_FULLSCREEN:
-			Newcord.newcord.setExtendedState(Frame.MAXIMIZED_BOTH);
+			Newcord.frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 			break;
 		case FRAME_MINIMIZE:
-			Newcord.newcord.setExtendedState(Frame.ICONIFIED);
+			Newcord.frame.setExtendedState(Frame.ICONIFIED);
 			break;
 		}
 	}

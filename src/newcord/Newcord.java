@@ -18,34 +18,38 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
-public class Newcord extends JFrame  {
+public class Newcord {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	// Newcord
-	public static Newcord newcord;
 	public static void main(String[] args) {
 		System.setProperty("sun.java2d.uiScale", "1.0");
-		newcord = new Newcord();
+		new Newcord();
 	}
 
 	private int posX = 0, posY = 0;
 	
+	static JFrame frame;
+	static JPanel viewPanel;
+	
 	Newcord() {
+		frame = new JFrame("Newcord");
+		viewPanel = new JPanel();
 		// Frame
-		setSize(2560, 1440);
-		setUndecorated(true);
-		setMinimumSize(new Dimension(1880, 1000));
+		frame.setSize(2560, 1440);
+		frame.setUndecorated(true);
+		frame.setMinimumSize(new Dimension(1880, 1000));
+		frame.setBackground(new Color(32, 34, 37));
 
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation((int)screenDim.getWidth()/2-getWidth()/2, (int)screenDim.getHeight()/2-getHeight()/2);
+		frame.setLocation((int)screenDim.getWidth()/2-frame.getWidth()/2, (int)screenDim.getHeight()/2-frame.getHeight()/2);
 		
 		// Entire view
-		JPanel viewPanel = new JPanel();
 		viewPanel.setLayout(null);
 		viewPanel.setBackground(new Color(32, 34, 37));
-		viewPanel.setSize(getWidth(), 50);
+		viewPanel.setSize(frame.getWidth(), 50);
 		viewPanel.setLayout(null);
 		
 		viewPanel.addMouseListener(new MouseAdapter(){
@@ -57,11 +61,11 @@ public class Newcord extends JFrame  {
 
 		viewPanel.addMouseMotionListener(new MouseAdapter(){
 			public void mouseDragged(MouseEvent e){		
-				setLocation(e.getXOnScreen()-posX, e.getYOnScreen()-posY);		
+				frame.setLocation(e.getXOnScreen()-posX, e.getYOnScreen()-posY);		
 			}
 		});
 		
-		getContentPane().add(viewPanel);
+		frame.getContentPane().add(viewPanel);
 		
 		// Logo
 		JLabel logoLabel = new JLabel("Newcord");
@@ -79,7 +83,7 @@ public class Newcord extends JFrame  {
 		closeButton.setFont(windowButtonFont);
 		closeButton.setSize(62, 50);
 		closeButton.setOpaque(true);
-		closeButton.setLocation(getWidth()-closeButton.getWidth(), 0);
+		closeButton.setLocation(frame.getWidth()-closeButton.getWidth(), 0);
 		closeButton.addMouseListener(new WindowButtonListener(
 				WindowButtonListener.FRAME_CLOSE, 
 				new Color(237, 66, 69), 
@@ -126,66 +130,8 @@ public class Newcord extends JFrame  {
 		viewPanel.add(fullscreenButton);
 		viewPanel.add(closeButton);
 		viewPanel.add(minimizeButton);
-
-		// Server list panel
-		JPanel serverPanel = new JPanel();
-		serverPanel.setBackground(viewPanel.getBackground());
 		
-		JScrollPane serverScrollPane = new JScrollPane(serverPanel);
-		serverScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
-		serverScrollPane.getHorizontalScrollBar().setPreferredSize(new Dimension(0, 0));
-		serverScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		serverScrollPane.setLocation(30, 50);
-		serverScrollPane.setSize(106, getHeight()-50);
-		serverScrollPane.setOpaque(true);
-		serverScrollPane.setBorder(null);
-
-		//GridLayout grid = new GridLayout(0, 1, 0, 10);
-		//serverPanel.setLayout(grid);
-		serverPanel.setLayout(new GridBagLayout());
-		GridBagConstraints gbc = new GridBagConstraints();
-		
-		HomeProfile dmProfile = new HomeProfile();
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.insets = new Insets(10, 0, 10, 0);
-		serverPanel.add(dmProfile, gbc);
-
-		JLabel splitLabel = new JLabel("————", SwingConstants.CENTER);
-		splitLabel.setPreferredSize(new Dimension(106, 20));
-		splitLabel.setForeground(new Color(85, 87, 90));
-		splitLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		gbc.insets = new Insets(0, 0, 20, 0);
-		serverPanel.add(splitLabel, gbc);
-		
-		LinkedList<ServerProfile>serverProfiles = new LinkedList<ServerProfile>();
-		int i = 2;
-		while(i < 12) {
-			ServerProfile sp = new ServerProfile(new ImageIcon("src/resources/testicon.png").getImage(), "ID");
-			serverProfiles.add(sp);
-			gbc.gridx = 0;
-			gbc.gridy = i;
-			serverPanel.add(sp, gbc);
-			i++;
-		}
-		i++;
-		
-		AddServerProfile addServerProfile = new AddServerProfile();
-		gbc.gridx = 0;
-		gbc.gridy = i+1;
-		serverPanel.add(addServerProfile, gbc);
-		
-		ExploreProfile exploreProfile = new ExploreProfile();
-		gbc.gridx = 0;
-		gbc.gridy = i+2;
-		gbc.insets = new Insets(0, 0, 30, 0);
-		serverPanel.add(exploreProfile, gbc);
-
-		//serverPanel.add(exploreProfile, gbc);
-		
-		viewPanel.add(serverScrollPane);
+		new ServerList().add();
 		
 		// Friend list panel
 		JScrollPane friendsScrollPane = new JScrollPane();
@@ -195,7 +141,6 @@ public class Newcord extends JFrame  {
 		JScrollPane channelScrollPane = new JScrollPane();
 		channelScrollPane.getVerticalScrollBar().setUI(new ScrollBar(new Color(47, 49, 54), new Color(32, 34, 37)));
 
-
-		setVisible(true);
+		frame.setVisible(true);
 	}
 }
