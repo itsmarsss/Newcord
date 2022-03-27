@@ -14,20 +14,27 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
-public class ServerList {
-	public void add() {
+public class ServerList extends JScrollPane {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ServerList() {
 		// Server list panel
 		System.setProperty("sun.java2d.uiScale", "1.0");
+		setName("ServerList");
 		JPanel serverPanel = new JPanel();
-		JScrollPane serverScrollPane = new JScrollPane(serverPanel);
+		//JScrollPane serverScrollPane = new JScrollPane(serverPanel);
+		setViewportView(serverPanel);
 		serverPanel.setBackground(new Color(32, 34, 37));
-		serverScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
-		serverScrollPane.getHorizontalScrollBar().setPreferredSize(new Dimension(0, 0));
-		serverScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		serverScrollPane.setLocation(30, 50);
-		serverScrollPane.setSize(106, Newcord.frame.getHeight()-50);
-		serverScrollPane.setOpaque(true);
-		serverScrollPane.setBorder(null);
+		getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
+		getHorizontalScrollBar().setPreferredSize(new Dimension(0, 0));
+		getVerticalScrollBar().setUnitIncrement(15);
+		setLocation(30, 50);
+		setSize(106, Newcord.frame.getHeight()-50);
+		setOpaque(true);
+		setBorder(null);
 
 		//GridLayout grid = new GridLayout(0, 1, 0, 10);
 		//serverPanel.setLayout(grid);
@@ -71,7 +78,5 @@ public class ServerList {
 		gbc.gridy = i+2;
 		gbc.insets = new Insets(0, 0, 30, 0);
 		serverPanel.add(exploreProfile, gbc);
-
-		Newcord.viewPanel.add(serverScrollPane);
 	}
 }

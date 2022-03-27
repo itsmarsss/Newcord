@@ -15,7 +15,7 @@ public class ServerProfile extends JLabel {
 		Image scaledIcon = serverIcon.getScaledInstance(106, 106, Image.SCALE_DEFAULT);
 		setSize(96, 96);
 		setIcon(new ImageIcon(scaledIcon));
-		this.setServerID(serverID);
+		setServerID(serverID);
 	}
 	public String getServerID() {
 		return serverID;
