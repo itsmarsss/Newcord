@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
 
 public class Newcord {
 	// Newcord
@@ -61,6 +60,7 @@ public class Newcord {
 		
 		// Logo
 		JLabel logoLabel = new JLabel("Newcord");
+		logoLabel.setName("NewcordLabel");
 		logoLabel.setLocation(18, 10);
 		logoLabel.setSize(130, 30);
 		logoLabel.setFont(new Font("Whitney", Font.BOLD, 30));
@@ -68,61 +68,7 @@ public class Newcord {
 		
 		viewPanel.add(logoLabel);
 
-		// Window buttons
-		Font windowButtonFont = new Font(null, Font.PLAIN, 29);
-		
-		JLabel closeButton = new JLabel("✕", SwingConstants.CENTER);
-		closeButton.setFont(windowButtonFont);
-		closeButton.setSize(62, 50);
-		closeButton.setOpaque(true);
-		closeButton.setLocation(frame.getWidth()-closeButton.getWidth(), 0);
-		closeButton.addMouseListener(new WindowButtonListener(
-				WindowButtonListener.FRAME_CLOSE, 
-				new Color(237, 66, 69), 
-				new Color(255, 255, 255), 
-				new Color(237, 66, 69), 
-				new Color(255, 255, 255), 
-				new Color(32, 34, 37), 
-				new Color(185, 187, 190)));
-		closeButton.setBackground(new Color(32, 34, 37));
-		closeButton.setForeground(new Color(159, 161, 165));
-		
-		JLabel fullscreenButton = new JLabel("□", SwingConstants.CENTER);
-		fullscreenButton.setFont(windowButtonFont);
-		fullscreenButton.setSize(62, 50);
-		fullscreenButton.setOpaque(true);
-		fullscreenButton.setLocation(closeButton.getX()-fullscreenButton.getWidth(), 0);
-		fullscreenButton.addMouseListener(new WindowButtonListener(
-				WindowButtonListener.FRAME_FULLSCREEN, 
-				new Color(40, 43, 46), 
-				new Color(190, 191, 193), 
-				new Color(43, 46, 50), 
-				new Color(220, 220, 221), 
-				new Color(32, 34, 37), 
-				new Color(160, 162, 164)));
-		fullscreenButton.setBackground(new Color(32, 34, 37));
-		fullscreenButton.setForeground(new Color(159, 161, 165));
-		
-		JLabel minimizeButton = new JLabel("—", SwingConstants.CENTER);
-		minimizeButton.setFont(windowButtonFont);		
-		minimizeButton.setSize(62, 50);
-		minimizeButton.setOpaque(true);
-		minimizeButton.setLocation(fullscreenButton.getX()-minimizeButton.getWidth(), 0);
-		minimizeButton.addMouseListener(new WindowButtonListener(
-				WindowButtonListener.FRAME_MINIMIZE, 
-				new Color(40, 43, 46), 
-				new Color(190, 191, 193), 
-				new Color(43, 46, 50), 
-				new Color(220, 220, 221), 
-				new Color(32, 34, 37), 
-				new Color(160, 162, 164)));
-		minimizeButton.setBackground(new Color(32, 34, 37));
-		minimizeButton.setForeground(new Color(159, 161, 165));
-		
-		viewPanel.add(fullscreenButton);
-		viewPanel.add(closeButton);
-		viewPanel.add(minimizeButton);
-		
+		viewPanel.add(new WindowButtons());
 		viewPanel.add(new ServerList());
 		viewPanel.add(new ChannelList());
 		

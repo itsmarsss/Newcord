@@ -12,6 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 public class ChannelList extends JPanel {
@@ -22,7 +23,7 @@ public class ChannelList extends JPanel {
 
 	public ChannelList() {
 		System.setProperty("sun.java2d.uiScale", "1.0");
-		setName("ChannelsList");		
+		setName("ChannelList");		
 		setLocation(166, 50);
 		setBackground(new Color(47, 49, 54));
 		setSize(480, Newcord.frame.getHeight()-50);
