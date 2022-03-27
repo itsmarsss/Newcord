@@ -1,17 +1,13 @@
 package newcord;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.LinkedList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,10 +15,6 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 public class Newcord {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	// Newcord
 	public static void main(String[] args) {
 		System.setProperty("sun.java2d.uiScale", "1.0");
@@ -131,16 +123,21 @@ public class Newcord {
 		viewPanel.add(closeButton);
 		viewPanel.add(minimizeButton);
 		
-		new ServerList().add();
+		viewPanel.add(new ServerList());
+		viewPanel.add(new ChannelList());
+		
+		for(Component i : viewPanel.getComponents())
+			System.out.println(i.getName());
 		
 		// Friend list panel
 		JScrollPane friendsScrollPane = new JScrollPane();
-		friendsScrollPane.getVerticalScrollBar().setUI(new ScrollBar(new Color(47, 49, 54), new Color(32, 34, 37)));
+		friendsScrollPane.getVerticalScrollBar().setUI(new ScrollBarUI(new Color(47, 49, 54), new Color(32, 34, 37), true));
 
 		// Channel list panel
 		JScrollPane channelScrollPane = new JScrollPane();
-		channelScrollPane.getVerticalScrollBar().setUI(new ScrollBar(new Color(47, 49, 54), new Color(32, 34, 37)));
+		channelScrollPane.getVerticalScrollBar().setUI(new ScrollBarUI(new Color(47, 49, 54), new Color(32, 34, 37), true));
 
 		frame.setVisible(true);
+		
 	}
 }
