@@ -68,7 +68,7 @@ public class ChannelList extends JPanel {
 		gbc.insets = new Insets(0, 10, 10, 1);
 		channelPanel.add(friendProfile, gbc);
 		
-		JLabel splitLabel = new JLabel("DIRECT MESSAGES                        +");
+		JLabel splitLabel = new JLabel("DIRECT MESSAGES                        ➕");
 		splitLabel.setForeground(new Color(142, 146, 151));
 		splitLabel.setFont(new Font("Whitney", Font.BOLD, 25));
 		gbc.gridx = 0;
