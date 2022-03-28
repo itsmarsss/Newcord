@@ -14,17 +14,24 @@ public class WindowButtons extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public WindowButtons() {
+		// Init
 		setName("WindowsButton");
+		
 		setLayout(null);
-		setBackground(new Color(0, 0, 0, 0));
 		setSize(186, 50);
+		setBackground(new Color(0, 0, 0, 0));
 		setLocation(Newcord.frame.getWidth()-186, 0);
 		
+		// Buttons
 		Font windowButtonFont = new Font(null, Font.PLAIN, 29);
 		JLabel closeButton = new JLabel("✕", SwingConstants.CENTER);
-		closeButton.setFont(windowButtonFont);
-		closeButton.setSize(62, 50);
+		JLabel fullscreenButton = new JLabel("□", SwingConstants.CENTER);
+		JLabel minimizeButton = new JLabel("—", SwingConstants.CENTER);
+		
+			// Buttons Init
 		closeButton.setOpaque(true);
+		closeButton.setSize(62, 50);
+		closeButton.setFont(windowButtonFont);
 		closeButton.setLocation(getWidth()-closeButton.getWidth(), 0);
 		closeButton.addMouseListener(new WindowButtonListener(
 				WindowButtonListener.FRAME_CLOSE, 
@@ -36,12 +43,13 @@ public class WindowButtons extends JPanel {
 				new Color(185, 187, 190)));
 		closeButton.setBackground(new Color(32, 34, 37));
 		closeButton.setForeground(new Color(159, 161, 165));
+		
 		add(closeButton);
 
-		JLabel fullscreenButton = new JLabel("□", SwingConstants.CENTER);
-		fullscreenButton.setFont(windowButtonFont);
-		fullscreenButton.setSize(62, 50);
+		
 		fullscreenButton.setOpaque(true);
+		fullscreenButton.setSize(62, 50);
+		fullscreenButton.setFont(windowButtonFont);
 		fullscreenButton.setLocation(closeButton.getX()-fullscreenButton.getWidth(), 0);
 		fullscreenButton.addMouseListener(new WindowButtonListener(
 				WindowButtonListener.FRAME_FULLSCREEN, 
@@ -53,12 +61,13 @@ public class WindowButtons extends JPanel {
 				new Color(160, 162, 164)));
 		fullscreenButton.setBackground(new Color(32, 34, 37));
 		fullscreenButton.setForeground(new Color(159, 161, 165));
+		
 		add(fullscreenButton);
 
-		JLabel minimizeButton = new JLabel("—", SwingConstants.CENTER);
-		minimizeButton.setFont(windowButtonFont);		
-		minimizeButton.setSize(62, 50);
+		
 		minimizeButton.setOpaque(true);
+		minimizeButton.setSize(62, 50);
+		minimizeButton.setFont(windowButtonFont);	
 		minimizeButton.setLocation(fullscreenButton.getX()-minimizeButton.getWidth(), 0);
 		minimizeButton.addMouseListener(new WindowButtonListener(
 				WindowButtonListener.FRAME_MINIMIZE, 
@@ -70,6 +79,7 @@ public class WindowButtons extends JPanel {
 				new Color(160, 162, 164)));
 		minimizeButton.setBackground(new Color(32, 34, 37));
 		minimizeButton.setForeground(new Color(159, 161, 165));
+		
 		add(minimizeButton);
 	}
 }
