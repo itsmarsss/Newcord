@@ -11,12 +11,16 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import newcord.components.ChannelList;
+import newcord.components.ServerList;
+import newcord.components.WindowButtons;
+import newcord.newui.ScrollBarUI;
 
 public class Newcord {
 	// Newcord
@@ -29,7 +33,7 @@ public class Newcord {
 	private int posX = 0, posY = 0;
 	private boolean drag = false;
 
-	static JFrame frame;
+	public static JFrame frame;
 	static JPanel viewPanel;
 
 	Newcord() {

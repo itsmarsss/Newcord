@@ -1,15 +1,17 @@
-package newcord;
+package newcord.components;
 
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import newcord.Newcord;
+
 public class WindowButtonListener implements MouseListener {
 
-	static final int FRAME_CLOSE = 0;
-	static final int FRAME_FULLSCREEN = 1;
-	static final int FRAME_MINIMIZE = 2;
+	public static final int FRAME_CLOSE = 0;
+	public static final int FRAME_FULLSCREEN = 1;
+	public static final int FRAME_MINIMIZE = 2;
 	
 	private int perform;
 	

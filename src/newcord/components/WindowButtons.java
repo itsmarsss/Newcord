@@ -1,4 +1,4 @@
-package newcord;
+package newcord.components;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -6,6 +6,8 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import newcord.Newcord;
 
 public class WindowButtons extends JPanel {
 	/**
@@ -23,7 +25,7 @@ public class WindowButtons extends JPanel {
 		setLocation(Newcord.frame.getWidth()-186, 0);
 		
 		// Buttons
-		Font windowButtonFont = new Font(null, Font.PLAIN, 29);
+		Font windowButtonFont = new Font(null, Font.PLAIN, 28);
 		JLabel closeButton = new JLabel("✕", SwingConstants.CENTER);
 		JLabel fullscreenButton = new JLabel("□", SwingConstants.CENTER);
 		JLabel minimizeButton = new JLabel("—", SwingConstants.CENTER);

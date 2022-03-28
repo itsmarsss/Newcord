@@ -1,4 +1,4 @@
-package newcord;
+package newcord.components;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,6 +12,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
+
+import newcord.Newcord;
+import newcord.ResourceLoader;
+import newcord.profiles.AddServerProfile;
+import newcord.profiles.ExploreProfile;
+import newcord.profiles.HomeProfile;
+import newcord.profiles.ServerProfile;
 
 public class ServerList extends JScrollPane {
 	/**

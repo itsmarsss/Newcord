@@ -1,6 +1,8 @@
-package newcord;
+package newcord.profiles;
 
 import javax.swing.JLabel;
+
+import newcord.ResourceLoader;
 
 public class HomeProfile extends JLabel {
 	/**

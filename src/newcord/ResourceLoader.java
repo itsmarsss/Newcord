@@ -3,7 +3,7 @@ package newcord;
 import javax.swing.ImageIcon;
 
 public class ResourceLoader {
-	static ResourceLoader loader = new ResourceLoader();
+	public static ResourceLoader loader = new ResourceLoader();
 	
 	// ServerList Icons
 	private ImageIcon homeProfileIcon = new ImageIcon(getClass().getClassLoader().getResource("resources/home.png"));
@@ -22,5 +22,4 @@ public class ResourceLoader {
 	public ImageIcon getExploreProfileIcon() {return exploreProfileIcon;}
 	
 	public ImageIcon getFriendProfileIcon() {return friendProfileIcon;}
-	
 }

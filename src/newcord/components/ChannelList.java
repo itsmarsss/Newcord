@@ -1,4 +1,4 @@
-package newcord;
+package newcord.components;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,6 +12,12 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import newcord.Newcord;
+import newcord.ResourceLoader;
+import newcord.newui.ScrollBarUI;
+import newcord.profiles.ChannelProfile;
+import newcord.profiles.FriendProfile;
 
 public class ChannelList extends JPanel {
 	/**
@@ -84,18 +90,21 @@ public class ChannelList extends JPanel {
 		channelPanel.add(friendProfile, gbc);
 		
 			// Splitter
-		JLabel splitLabel = new JLabel("DIRECT MESSAGES                        ➕");
+		JLabel splitLabel = new JLabel("DIRECT MESSAGES                  ➕");
 		splitLabel.setForeground(new Color(142, 146, 151));
+		splitLabel.setPreferredSize(new Dimension(420, 25));
 		splitLabel.setFont(new Font("Whitney", Font.BOLD, 25));
 		gbc.gridx = 0;
 		gbc.gridy = 1;
-		gbc.insets = new Insets(0, 10, 3, 1);
+		gbc.insets = new Insets(0, 10, 10, 1);
 		
 		channelPanel.add(splitLabel, gbc);
 		
 			// Channels
 		LinkedList<ChannelProfile>channelProfiles = new LinkedList<ChannelProfile>();
 		int i = 2;
+
+		gbc.insets = new Insets(0, 10, 3, 1);
 		while(i < 32) {
 			ChannelProfile cp = new ChannelProfile(ResourceLoader.loader.getTempProfileIcon().getImage(), "ID");
 			channelProfiles.add(cp);
