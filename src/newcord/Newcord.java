@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,6 +22,7 @@ public class Newcord {
 	}
 
 	private int posX = 0, posY = 0;
+	private final ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("resources/icon.png"));
 	
 	static JFrame frame;
 	static JPanel viewPanel;
@@ -31,6 +33,7 @@ public class Newcord {
 		// Frame
 		frame.setSize(2560, 1440);
 		frame.setUndecorated(true);
+		frame.setIconImage(icon.getImage());
 		frame.setMinimumSize(new Dimension(1880, 1000));
 		frame.setBackground(new Color(32, 34, 37));
 
