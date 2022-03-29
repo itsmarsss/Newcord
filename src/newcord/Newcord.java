@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
@@ -28,47 +29,65 @@ public class Newcord {
 		System.setProperty("sun.java2d.uiScale", "1");
 		new Newcord();
 	}
-	
+
 	// Frame dragging
 	private int posX = 0, posY = 0;
 	private boolean drag = false;
 
+	// Resize
+	public static int oldW;
+	public static int oldH;
+	public static int oldX;
+	public static int oldY;
+	public static boolean full = false;
+
 	public static JFrame frame;
-	static JPanel viewPanel;
+	public static JPanel viewPanel;
+	public static WindowButtons windowButtons;
+	public static ServerList serverList;
+	public static ChannelList channelList;
 
 	Newcord() {
 		// Init
 		frame = new JFrame("Newcord");
 		viewPanel = new JPanel();
-		
+
 		// Frame
-			// Frame Icon
+		// Frame Icon
 		List<Image>icons = new ArrayList<Image>();
 		icons.add(new ImageIcon("src/resources/Icon1.png").getImage());
 		icons.add(new ImageIcon("src/resources/Icon2.png").getImage());
 		icons.add(new ImageIcon("src/resources/Icon3.png").getImage());
 		icons.add(new ImageIcon("src/resources/Icon4.png").getImage());
 		frame.setIconImages((List<? extends Image>)icons);
-		
-			// Frame Init
+
+		// Frame Init
 		frame.setUndecorated(true);
-		frame.setBackground(new Color(32, 34, 37));
+		frame.getContentPane().setLayout(null);
 		frame.setMinimumSize(new Dimension(1880, 1000));
+		frame.getContentPane().setBackground(new Color(32, 34, 37));
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setSize((int)screenDim.getWidth()/2, (int)screenDim.getHeight()/2);
 		frame.setLocation((int)screenDim.getWidth()/2-frame.getWidth()/2, (int)screenDim.getHeight()/2-frame.getHeight()/2);
 
 		// Entire View
-		
-			// View Init
+
+		// View Init
+		ComponentResizer cr = new ComponentResizer();
+		cr.registerComponent(frame);
+		cr.setSnapSize(new Dimension(1, 1));
+		cr.setMinimumSize(new Dimension(1880, 1000));
+		cr.setMaximumSize(screenDim);
+
 		viewPanel.setLayout(null);
-		viewPanel.setSize(frame.getWidth(), 50);
+		viewPanel.setLocation(5, 5);
 		viewPanel.setBackground(new Color(32, 34, 37));
-		
-			// Drag 'n' Drop
+		viewPanel.setSize(frame.getWidth()-10, frame.getHeight()-10);
+
+		// Drag 'n' Drop
 		viewPanel.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				if(e.getY() < 50) {
+				if(e.getY() < 50 && e.getY() > 10) {
 					drag = true;
 					posX = e.getX();
 					posY = e.getY();
@@ -76,11 +95,32 @@ public class Newcord {
 					drag = false;
 				}
 			}
+			public void mouseClicked(MouseEvent e) {
+				if(e.getClickCount() == 2) {
+					if(full) {
+						frame.setSize(oldW, oldH);
+						frame.setLocation(oldX, oldY);
+						full = false;
+					}else {
+						oldW = frame.getWidth();
+						oldH = frame.getHeight();
+						oldX = frame.getX();
+						oldY = frame.getY();
+						frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+						full = true;
+					}
+					resize();
+					windowButtons.resize();
+					serverList.resize();
+					channelList.resize();
+				} 
+			}
 		});
 		viewPanel.addMouseMotionListener(new MouseAdapter() {
 			public void mouseDragged(MouseEvent e) {
-				if(drag)
-					frame.setLocation(e.getXOnScreen()-posX, e.getYOnScreen()-posY);		
+				if(drag) {
+					frame.setLocation(e.getXOnScreen()-posX, e.getYOnScreen()-posY);
+				}
 			}
 		});
 
@@ -97,9 +137,13 @@ public class Newcord {
 		viewPanel.add(logoLabel);
 
 		// Add Other Components
-		viewPanel.add(new WindowButtons());
-		viewPanel.add(new ServerList());
-		viewPanel.add(new ChannelList());
+		windowButtons = new WindowButtons();
+		serverList = new ServerList();
+		channelList = new ChannelList();
+
+		viewPanel.add(windowButtons);
+		viewPanel.add(serverList);
+		viewPanel.add(channelList);
 
 		for(Component i : viewPanel.getComponents())
 			System.out.println(i.getName());
@@ -113,5 +157,10 @@ public class Newcord {
 		channelScrollPane.getVerticalScrollBar().setUI(new ScrollBarUI(new Color(47, 49, 54), new Color(32, 34, 37), true));
 
 		frame.setVisible(true);
+	}
+
+	public static void resize() {
+		viewPanel.setLocation(5, 5);
+		viewPanel.setSize(frame.getWidth()-10, frame.getHeight()-10);
 	}
 }

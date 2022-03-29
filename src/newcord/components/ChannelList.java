@@ -25,6 +25,7 @@ public class ChannelList extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private JScrollPane channelScrollPane;
 	public ChannelList() {
 		// Init
 		setName("ChannelList");
@@ -34,23 +35,23 @@ public class ChannelList extends JPanel {
 		setLayout(null);		
 		setLocation(166, 50);
 		setBackground(new Color(47, 49, 54));
-		setSize(480, Newcord.frame.getHeight()-50);
+		setSize(480, Newcord.viewPanel.getHeight()-50);
 
 		// Channel Section
 		JPanel channelPanel = new JPanel();
-		JScrollPane serverScrollPane = new JScrollPane(channelPanel);
+		channelScrollPane = new JScrollPane(channelPanel);
 		channelPanel.setBackground(new Color(47, 49, 54));
 		
 			// Channel Init
-		serverScrollPane.setOpaque(true);
-		serverScrollPane.setBorder(null);
-		serverScrollPane.setLocation(0, 106);
-		serverScrollPane.setSize(477, getHeight()-106);
-		serverScrollPane.setBackground(new Color(47, 49, 54));
-		serverScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		serverScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(15, 0));
-		serverScrollPane.getHorizontalScrollBar().setPreferredSize(new Dimension(0, 0));
-		serverScrollPane.getVerticalScrollBar().setUI(new ScrollBarUI(new Color(47, 49, 54), new Color(32, 34, 37), false));
+		channelScrollPane.setOpaque(true);
+		channelScrollPane.setBorder(null);
+		channelScrollPane.setLocation(0, 106);
+		channelScrollPane.setSize(477, getHeight()-110);
+		channelScrollPane.setBackground(new Color(47, 49, 54));
+		channelScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+		channelScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(10, 0));
+		channelScrollPane.getHorizontalScrollBar().setPreferredSize(new Dimension(0, 0));
+		channelScrollPane.getVerticalScrollBar().setUI(new ScrollBarUI(new Color(47, 49, 54), new Color(32, 34, 37), false));
 
 		// Channel TopBar
 		JPanel channelTopBarPanel = new JPanel();
@@ -117,6 +118,11 @@ public class ChannelList extends JPanel {
 			i++;
 		}
 
-		add(serverScrollPane);
+		add(channelScrollPane);
+	}
+
+	public void resize() {
+		setSize(getWidth(), Newcord.viewPanel.getHeight()-50);
+		channelScrollPane.setSize(477, getHeight()-110);
 	}
 }

@@ -15,6 +15,7 @@ public class WindowButtons extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public JLabel fullscreenButton;
 	public WindowButtons() {
 		// Init
 		setName("WindowsButton");
@@ -22,12 +23,12 @@ public class WindowButtons extends JPanel {
 		setLayout(null);
 		setSize(186, 50);
 		setBackground(new Color(0, 0, 0, 0));
-		setLocation(Newcord.frame.getWidth()-186, 0);
+		setLocation(Newcord.viewPanel.getWidth()-186, 0);
 		
 		// Buttons
 		Font windowButtonFont = new Font(null, Font.PLAIN, 28);
 		JLabel closeButton = new JLabel("✕", SwingConstants.CENTER);
-		JLabel fullscreenButton = new JLabel("□", SwingConstants.CENTER);
+		fullscreenButton = new JLabel("□", SwingConstants.CENTER);
 		JLabel minimizeButton = new JLabel("—", SwingConstants.CENTER);
 		
 			// Buttons Init
@@ -83,5 +84,9 @@ public class WindowButtons extends JPanel {
 		minimizeButton.setForeground(new Color(159, 161, 165));
 		
 		add(minimizeButton);
+	}
+
+	public void resize() {
+		setLocation(Newcord.viewPanel.getWidth()-186, 0);
 	}
 }
