@@ -33,7 +33,9 @@ public class ServerList extends JScrollPane {
 		setOpaque(true);
 		setBorder(null);
 		setLocation(30, 50);
-		setSize(106, Newcord.frame.getHeight()-50);
+		setBackground(new Color(32, 34, 37));
+		setSize(106, Newcord.getFrame().getHeight()-50);
+		
 		getVerticalScrollBar().setUnitIncrement(15);
 		getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
 		getHorizontalScrollBar().setPreferredSize(new Dimension(0, 0));

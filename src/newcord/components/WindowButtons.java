@@ -23,7 +23,7 @@ public class WindowButtons extends JPanel {
 		setLayout(null);
 		setSize(186, 50);
 		setBackground(new Color(0, 0, 0, 0));
-		setLocation(Newcord.viewPanel.getWidth()-186, 0);
+		setLocation(Newcord.getViewPanel().getWidth()-186, 0);
 		
 		// Buttons
 		Font windowButtonFont = new Font(null, Font.PLAIN, 28);

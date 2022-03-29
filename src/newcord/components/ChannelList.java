@@ -35,7 +35,7 @@ public class ChannelList extends JPanel {
 		setLayout(null);		
 		setLocation(166, 50);
 		setBackground(new Color(47, 49, 54));
-		setSize(480, Newcord.viewPanel.getHeight()-50);
+		setSize(480, Newcord.getViewPanel().getHeight()-50);
 
 		// Channel Section
 		JPanel channelPanel = new JPanel();

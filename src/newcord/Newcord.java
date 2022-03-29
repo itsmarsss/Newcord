@@ -35,19 +35,23 @@ public class Newcord {
 	private boolean drag = false;
 
 	// Resize
-	static int oldW;
-	static int oldH;
-	static int oldX;
-	static int oldY;
-	static boolean full = false;
+	private static int oldW;
+	private static int oldH;
+	private static int oldX;
+	private static int oldY;
+	private static boolean full = false;
 
-	public static JFrame frame;
-	public static JPanel viewPanel;
-	public static WindowButtons windowButtons;
-	public static ServerList serverList;
-	public static ChannelList channelList;
+	private static JFrame frame;
+	private static JPanel viewPanel;
+	private static WindowButtons windowButtons;
+	private static ServerList serverList;
+	private static ChannelList channelList;
 
 	Newcord() {
+		initializeUI();
+	}
+	
+	private void initializeUI() {
 		// Init
 		frame = new JFrame("Newcord");
 		viewPanel = new JPanel();
@@ -170,5 +174,13 @@ public class Newcord {
 		
 		channelList.setSize(channelList.getWidth(), Newcord.viewPanel.getHeight()-50);
 		channelList.channelScrollPane.setSize(477, channelList.getHeight()-110);
+	}
+
+	public static JPanel getViewPanel() {
+		return viewPanel;
+	}
+
+	public static JFrame getFrame() {
+		return frame;
 	}
 }
