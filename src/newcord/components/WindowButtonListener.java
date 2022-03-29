@@ -51,7 +51,7 @@ public class WindowButtonListener implements MouseListener {
 			Newcord.frame.setVisible(false);
 			break;
 		case FRAME_FULLSCREEN:
-			Newcord.frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+			Newcord.doFullscreen();
 			break;
 		case FRAME_MINIMIZE:
 			Newcord.frame.setExtendedState(Frame.ICONIFIED);
