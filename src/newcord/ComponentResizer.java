@@ -412,9 +412,6 @@ public class ComponentResizer extends MouseAdapter
 
 
 		Newcord.resize();
-		Newcord.windowButtons.resize();
-		Newcord.serverList.resize();
-		Newcord.channelList.resize();
 	}
 
 	/*

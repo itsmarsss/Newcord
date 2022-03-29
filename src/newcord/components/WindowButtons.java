@@ -85,8 +85,4 @@ public class WindowButtons extends JPanel {
 		
 		add(minimizeButton);
 	}
-
-	public void resize() {
-		setLocation(Newcord.viewPanel.getWidth()-186, 0);
-	}
 }

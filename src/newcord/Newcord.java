@@ -35,11 +35,11 @@ public class Newcord {
 	private boolean drag = false;
 
 	// Resize
-	public static int oldW;
-	public static int oldH;
-	public static int oldX;
-	public static int oldY;
-	public static boolean full = false;
+	static int oldW;
+	static int oldH;
+	static int oldX;
+	static int oldY;
+	static boolean full = false;
 
 	public static JFrame frame;
 	public static JPanel viewPanel;
@@ -97,22 +97,7 @@ public class Newcord {
 			}
 			public void mouseClicked(MouseEvent e) {
 				if(e.getClickCount() == 2) {
-					if(full) {
-						frame.setSize(oldW, oldH);
-						frame.setLocation(oldX, oldY);
-						full = false;
-					}else {
-						oldW = frame.getWidth();
-						oldH = frame.getHeight();
-						oldX = frame.getX();
-						oldY = frame.getY();
-						frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-						full = true;
-					}
-					resize();
-					windowButtons.resize();
-					serverList.resize();
-					channelList.resize();
+					doFullscreen();
 				} 
 			}
 		});
@@ -159,8 +144,31 @@ public class Newcord {
 		frame.setVisible(true);
 	}
 
+	public static void doFullscreen() {
+		if(full) {
+			frame.setSize(oldW, oldH);
+			frame.setLocation(oldX, oldY);
+			full = false;
+		}else {
+			oldW = frame.getWidth();
+			oldH = frame.getHeight();
+			oldX = frame.getX();
+			oldY = frame.getY();
+			frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+			full = true;
+		}
+		resize();
+	}
+	
 	public static void resize() {
 		viewPanel.setLocation(5, 5);
 		viewPanel.setSize(frame.getWidth()-10, frame.getHeight()-10);
+		
+		windowButtons.setLocation(Newcord.viewPanel.getWidth()-186, 0);
+		
+		serverList.setSize(serverList.getWidth(), Newcord.viewPanel.getHeight()-50);
+		
+		channelList.setSize(channelList.getWidth(), Newcord.viewPanel.getHeight()-50);
+		channelList.channelScrollPane.setSize(477, channelList.getHeight()-110);
 	}
 }

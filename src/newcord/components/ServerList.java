@@ -98,8 +98,4 @@ public class ServerList extends JScrollPane {
 		
 		serverPanel.add(exploreProfile, gbc);
 	}
-
-	public void resize() {
-		setSize(getWidth(), Newcord.viewPanel.getHeight()-50);
-	}
 }

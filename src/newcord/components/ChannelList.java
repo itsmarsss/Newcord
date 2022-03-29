@@ -25,7 +25,7 @@ public class ChannelList extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private JScrollPane channelScrollPane;
+	public JScrollPane channelScrollPane;
 	public ChannelList() {
 		// Init
 		setName("ChannelList");
@@ -119,10 +119,5 @@ public class ChannelList extends JPanel {
 		}
 
 		add(channelScrollPane);
-	}
-
-	public void resize() {
-		setSize(getWidth(), Newcord.viewPanel.getHeight()-50);
-		channelScrollPane.setSize(477, getHeight()-110);
 	}
 }
