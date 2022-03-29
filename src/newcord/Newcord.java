@@ -173,7 +173,7 @@ public class Newcord {
 		serverList.setSize(serverList.getWidth(), Newcord.viewPanel.getHeight()-50);
 		
 		channelList.setSize(channelList.getWidth(), Newcord.viewPanel.getHeight()-50);
-		channelList.channelScrollPane.setSize(477, channelList.getHeight()-110);
+		channelList.getChannelScrollPane().setSize(477, channelList.getHeight()-110);
 	}
 
 	public static JPanel getViewPanel() {

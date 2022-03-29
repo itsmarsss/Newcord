@@ -15,7 +15,6 @@ public class WindowButtons extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public JLabel fullscreenButton;
 	public WindowButtons() {
 		// Init
 		setName("WindowsButton");
@@ -28,7 +27,7 @@ public class WindowButtons extends JPanel {
 		// Buttons
 		Font windowButtonFont = new Font(null, Font.PLAIN, 28);
 		JLabel closeButton = new JLabel("✕", SwingConstants.CENTER);
-		fullscreenButton = new JLabel("□", SwingConstants.CENTER);
+		JLabel fullscreenButton = new JLabel("□", SwingConstants.CENTER);
 		JLabel minimizeButton = new JLabel("—", SwingConstants.CENTER);
 		
 			// Buttons Init

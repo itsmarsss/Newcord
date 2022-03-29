@@ -25,7 +25,7 @@ public class ChannelList extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public JScrollPane channelScrollPane;
+	private JScrollPane channelScrollPane;
 	public ChannelList() {
 		// Init
 		setName("ChannelList");
@@ -119,5 +119,8 @@ public class ChannelList extends JPanel {
 		}
 
 		add(channelScrollPane);
+	}
+	public JScrollPane getChannelScrollPane() {
+		return channelScrollPane;
 	}
 }
