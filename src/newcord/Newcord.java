@@ -1,5 +1,7 @@
 package newcord;
 
+// Imports
+// AWT
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -12,19 +14,22 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+// Swing
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+// Components
 import newcord.components.ChannelList;
 import newcord.components.ServerList;
 import newcord.components.WindowButtons;
 import newcord.newui.ScrollBarUI;
 
+// Newcord Class
 public class Newcord {
-	// Newcord
+	// Main Function
 	public static void main(String[] args) {
 		System.setProperty("sun.java2d.uiScale", "1");
 		new Newcord();
@@ -34,36 +39,37 @@ public class Newcord {
 	private int posX = 0, posY = 0;
 	private boolean drag = false;
 
-	// Resize
+	// Non-fullscreen dimensions and toggle
 	private static int oldW;
 	private static int oldH;
 	private static int oldX;
 	private static int oldY;
 	private static boolean full = false;
 
-	private static JFrame frame;
+	// Main frame and components
+	private static JFrame frame;					// Window holding everything
 	private static JPanel viewPanel;
-	private static WindowButtons windowButtons;
+	private static WindowButtons windowButtons;		// Other components...
 	private static ServerList serverList;
 	private static ChannelList channelList;
 
+	// Newcord Default Constructor
 	Newcord() {
-		initializeUI();
-	}
-	
-	private void initializeUI() {
 		// Init
 		frame = new JFrame("Newcord");
 		viewPanel = new JPanel();
+		drawUI();
+	}
 
-		// Frame
+	// render frame and viewPanel
+	private void drawUI() {
 		// Frame Icon
 		List<Image>icons = new ArrayList<Image>();
 		icons.add(new ImageIcon("src/resources/Icon1.png").getImage());
 		icons.add(new ImageIcon("src/resources/Icon2.png").getImage());
 		icons.add(new ImageIcon("src/resources/Icon3.png").getImage());
 		icons.add(new ImageIcon("src/resources/Icon4.png").getImage());
-		frame.setIconImages((List<? extends Image>)icons);
+		frame.setIconImages(icons);
 
 		// Frame Init
 		frame.setUndecorated(true);
@@ -95,7 +101,7 @@ public class Newcord {
 					drag = true;
 					posX = e.getX();
 					posY = e.getY();
-				}else {
+				} else {
 					drag = false;
 				}
 			}
@@ -153,7 +159,7 @@ public class Newcord {
 			frame.setSize(oldW, oldH);
 			frame.setLocation(oldX, oldY);
 			full = false;
-		}else {
+		} else {
 			oldW = frame.getWidth();
 			oldH = frame.getHeight();
 			oldX = frame.getX();
