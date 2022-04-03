@@ -9,18 +9,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ChannelProfile extends JPanel {
+public class MemberProfile extends JPanel {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
 	private String channelID;
-	public ChannelProfile(Image userIcon, String channelID) {
+	public MemberProfile(Image userIcon, String channelID) {
 		// Init
 		setLayout(null);
 		setBackground(null);
-		setPreferredSize(new Dimension(448, 92));
+		setPreferredSize(new Dimension(540, 92));
 		
 		// Icon
 		Image scaledIcon = userIcon.getScaledInstance(72, 72, Image.SCALE_DEFAULT);

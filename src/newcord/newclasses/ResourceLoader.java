@@ -1,4 +1,4 @@
-package newcord;
+package newcord.newclasses;
 
 import javax.swing.ImageIcon;
 

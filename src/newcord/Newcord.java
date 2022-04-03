@@ -23,9 +23,11 @@ import javax.swing.JScrollPane;
 
 // Components
 import newcord.components.ChannelList;
+import newcord.components.ChatBoxArea;
 import newcord.components.ServerList;
 import newcord.components.WindowButtons;
-import newcord.newui.ScrollBarUI;
+import newcord.newclasses.ScrollBarUI;
+import newcord.profiles.MessageProfile;
 
 // Newcord Class
 public class Newcord {
@@ -52,6 +54,7 @@ public class Newcord {
 	private static WindowButtons windowButtons;		// Other components...
 	private static ServerList serverList;
 	private static ChannelList channelList;
+	private static ChatBoxArea chatBoxArea;
 
 	// Newcord Default Constructor
 	Newcord() {
@@ -77,7 +80,7 @@ public class Newcord {
 		frame.setMinimumSize(new Dimension(1880, 1000));
 		frame.getContentPane().setBackground(new Color(32, 34, 37));
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setSize((int)screenDim.getWidth()/2, (int)screenDim.getHeight()/2);
+		frame.setSize((int)(screenDim.getWidth()/1.5), (int)(screenDim.getHeight()/1.5));
 		frame.setLocation((int)screenDim.getWidth()/2-frame.getWidth()/2, (int)screenDim.getHeight()/2-frame.getHeight()/2);
 
 		// Entire View
@@ -114,6 +117,12 @@ public class Newcord {
 		viewPanel.addMouseMotionListener(new MouseAdapter() {
 			public void mouseDragged(MouseEvent e) {
 				if(drag) {
+					if(full) {
+						frame.setSize(oldW, oldH);
+						frame.setLocation(oldX, oldY);
+						full = false;
+						resize();
+					}
 					frame.setLocation(e.getXOnScreen()-posX, e.getYOnScreen()-posY);
 				}
 			}
@@ -123,7 +132,7 @@ public class Newcord {
 
 		// Logo
 		JLabel logoLabel = new JLabel("Newcord");
-		logoLabel.setName("NewcordLabel");
+		logoLabel.setName("NewcordLogo");
 		logoLabel.setSize(130, 30);
 		logoLabel.setLocation(18, 10);
 		logoLabel.setForeground(new Color(114, 118, 125));
@@ -135,10 +144,12 @@ public class Newcord {
 		windowButtons = new WindowButtons();
 		serverList = new ServerList();
 		channelList = new ChannelList();
+		chatBoxArea = new ChatBoxArea();
 
 		viewPanel.add(windowButtons);
 		viewPanel.add(serverList);
 		viewPanel.add(channelList);
+		viewPanel.add(chatBoxArea);
 
 		for(Component i : viewPanel.getComponents())
 			System.out.println(i.getName());
@@ -169,17 +180,32 @@ public class Newcord {
 		}
 		resize();
 	}
-	
+
 	public static void resize() {
 		viewPanel.setLocation(5, 5);
 		viewPanel.setSize(frame.getWidth()-10, frame.getHeight()-10);
-		
+
 		windowButtons.setLocation(Newcord.viewPanel.getWidth()-186, 0);
-		
+
 		serverList.setSize(serverList.getWidth(), Newcord.viewPanel.getHeight()-50);
-		
+
 		channelList.setSize(channelList.getWidth(), Newcord.viewPanel.getHeight()-50);
 		channelList.getChannelScrollPane().setSize(477, channelList.getHeight()-110);
+
+		chatBoxArea.setSize(Newcord.getViewPanel().getWidth()-646, Newcord.getViewPanel().getHeight()-50);
+		chatBoxArea.getChatBoxTopBarPanel().setSize(chatBoxArea.getWidth(), 106);
+		chatBoxArea.getChatBoxScrollPane().setSize(chatBoxArea.getWidth()-540, chatBoxArea.getHeight()-256);
+		
+		chatBoxArea.getTypePanel().setSize(chatBoxArea.getChatBoxScrollPane().getWidth()-60, 100);
+		chatBoxArea.getTypePanel().setLocation(30, chatBoxArea.getHeight()-125);
+		chatBoxArea.getTypeScrollPane().setSize(chatBoxArea.getTypePanel().getWidth()-20, chatBoxArea.getTypePanel().getHeight()-16);
+		chatBoxArea.reline();
+		
+		chatBoxArea.getMembersScrollPane().setSize(540, chatBoxArea.getHeight()-106);
+		chatBoxArea.getMembersScrollPane().setLocation(chatBoxArea.getChatBoxScrollPane().getWidth()+5, 106);
+		for(MessageProfile mp : chatBoxArea.getMessageProfiles()) {
+			mp.setPreferredSize(new Dimension(Newcord.getViewPanel().getWidth()-646, 100));
+		}
 	}
 
 	public static JPanel getViewPanel() {

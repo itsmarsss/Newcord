@@ -14,7 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 import newcord.Newcord;
-import newcord.ResourceLoader;
+import newcord.newclasses.ResourceLoader;
 import newcord.profiles.AddServerProfile;
 import newcord.profiles.ExploreProfile;
 import newcord.profiles.HomeProfile;
