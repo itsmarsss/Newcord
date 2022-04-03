@@ -14,7 +14,7 @@ import javax.swing.JScrollPane;
 import newcord.Newcord;
 import newcord.ResourceLoader;
 import newcord.newui.ScrollBarUI;
-import newcord.profiles.ChannelProfile;
+import newcord.profiles.MemberProfile;
 import newcord.profiles.MessageProfile;
 
 public class ChatBoxArea extends JPanel {
@@ -90,12 +90,12 @@ public class ChatBoxArea extends JPanel {
 		membersPanel.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		
-			// Messages
+			// Members
 		gbc.insets = new Insets(0, 5, 12, 5);
-		LinkedList<ChannelProfile>memberProfiles = new LinkedList<ChannelProfile>();
+		LinkedList<MemberProfile>memberProfiles = new LinkedList<MemberProfile>();
 		int i = 0;
 		while(i < 10) {
-			ChannelProfile cp = new ChannelProfile(ResourceLoader.loader.getTempProfileIcon().getImage(), "UserID");
+			MemberProfile cp = new MemberProfile(ResourceLoader.loader.getTempProfileIcon().getImage(), "UserID");
 			memberProfiles.add(cp);
 			gbc.gridx = 0;
 			gbc.gridy = i;

@@ -117,7 +117,12 @@ public class Newcord {
 		viewPanel.addMouseMotionListener(new MouseAdapter() {
 			public void mouseDragged(MouseEvent e) {
 				if(drag) {
-					frame.setLocation(e.getXOnScreen()-posX, e.getYOnScreen()-posY);
+					if(full) {
+						frame.setSize(oldW, oldH);
+						frame.setLocation(oldX, oldY);
+						full = false;
+						resize();
+					}
 				}
 			}
 		});
@@ -174,18 +179,18 @@ public class Newcord {
 		}
 		resize();
 	}
-	
+
 	public static void resize() {
 		viewPanel.setLocation(5, 5);
 		viewPanel.setSize(frame.getWidth()-10, frame.getHeight()-10);
-		
+
 		windowButtons.setLocation(Newcord.viewPanel.getWidth()-186, 0);
-		
+
 		serverList.setSize(serverList.getWidth(), Newcord.viewPanel.getHeight()-50);
-		
+
 		channelList.setSize(channelList.getWidth(), Newcord.viewPanel.getHeight()-50);
 		channelList.getChannelScrollPane().setSize(477, channelList.getHeight()-110);
-		
+
 		chatBoxArea.setSize(Newcord.getViewPanel().getWidth()-646, Newcord.getViewPanel().getHeight()-50);
 		chatBoxArea.getChatBoxTopBarPanel().setSize(chatBoxArea.getWidth(), 106);
 		chatBoxArea.getChatBoxScrollPane().setSize(chatBoxArea.getWidth()-395, chatBoxArea.getHeight()-106);
