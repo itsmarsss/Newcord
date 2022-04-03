@@ -123,6 +123,7 @@ public class Newcord {
 						full = false;
 						resize();
 					}
+					frame.setLocation(e.getXOnScreen()-posX, e.getYOnScreen()-posY);
 				}
 			}
 		});
