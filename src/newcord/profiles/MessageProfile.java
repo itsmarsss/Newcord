@@ -46,7 +46,7 @@ public class MessageProfile extends JPanel {
 		FontRenderContext frc = new FontRenderContext(new AffineTransform(), true, true);
 		int w = (int)(font.getStringBounds(userID, frc).getWidth());
 		
-		usernameLabel.setSize(w, 40);
+		usernameLabel.setSize(w+5, 40);
 		
 		// Time stamp
 		String timeStamp = "TempTimeStamp";
@@ -62,7 +62,7 @@ public class MessageProfile extends JPanel {
 		timeLabel.setSize(w2, 40);
 		
 		// Message content
-		JLabel messageLabel = new JLabel("Message here");
+		JLabel messageLabel = new JLabel("I can frame you now");
 		messageLabel.setFont(font);
 		messageLabel.setSize((int)getPreferredSize().getWidth()-messageLabel.getX(), (int)getPreferredSize().getHeight());
 		messageLabel.setForeground(new Color(255, 255, 255));

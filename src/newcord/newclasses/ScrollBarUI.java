@@ -1,4 +1,4 @@
-package newcord.newui;
+package newcord.newclasses;
 
 import java.awt.Color;
 import java.awt.Dimension;

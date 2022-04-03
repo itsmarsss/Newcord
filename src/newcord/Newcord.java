@@ -26,7 +26,7 @@ import newcord.components.ChannelList;
 import newcord.components.ChatBoxArea;
 import newcord.components.ServerList;
 import newcord.components.WindowButtons;
-import newcord.newui.ScrollBarUI;
+import newcord.newclasses.ScrollBarUI;
 import newcord.profiles.MessageProfile;
 
 // Newcord Class
@@ -80,7 +80,7 @@ public class Newcord {
 		frame.setMinimumSize(new Dimension(1880, 1000));
 		frame.getContentPane().setBackground(new Color(32, 34, 37));
 		Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setSize((int)screenDim.getWidth()/2, (int)screenDim.getHeight()/2);
+		frame.setSize((int)(screenDim.getWidth()/1.5), (int)(screenDim.getHeight()/1.5));
 		frame.setLocation((int)screenDim.getWidth()/2-frame.getWidth()/2, (int)screenDim.getHeight()/2-frame.getHeight()/2);
 
 		// Entire View
@@ -194,8 +194,14 @@ public class Newcord {
 
 		chatBoxArea.setSize(Newcord.getViewPanel().getWidth()-646, Newcord.getViewPanel().getHeight()-50);
 		chatBoxArea.getChatBoxTopBarPanel().setSize(chatBoxArea.getWidth(), 106);
-		chatBoxArea.getChatBoxScrollPane().setSize(chatBoxArea.getWidth()-395, chatBoxArea.getHeight()-106);
-		chatBoxArea.getMembersScrollPane().setSize(395, chatBoxArea.getHeight()-106);
+		chatBoxArea.getChatBoxScrollPane().setSize(chatBoxArea.getWidth()-540, chatBoxArea.getHeight()-256);
+		
+		chatBoxArea.getTypePanel().setSize(chatBoxArea.getChatBoxScrollPane().getWidth()-60, 100);
+		chatBoxArea.getTypePanel().setLocation(30, chatBoxArea.getHeight()-125);
+		chatBoxArea.getTypeScrollPane().setSize(chatBoxArea.getTypePanel().getWidth()-20, chatBoxArea.getTypePanel().getHeight()-16);
+		chatBoxArea.reline();
+		
+		chatBoxArea.getMembersScrollPane().setSize(540, chatBoxArea.getHeight()-106);
 		chatBoxArea.getMembersScrollPane().setLocation(chatBoxArea.getChatBoxScrollPane().getWidth()+5, 106);
 		for(MessageProfile mp : chatBoxArea.getMessageProfiles()) {
 			mp.setPreferredSize(new Dimension(Newcord.getViewPanel().getWidth()-646, 100));

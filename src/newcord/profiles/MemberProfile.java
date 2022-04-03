@@ -20,7 +20,7 @@ public class MemberProfile extends JPanel {
 		// Init
 		setLayout(null);
 		setBackground(null);
-		setPreferredSize(new Dimension(375, 92));
+		setPreferredSize(new Dimension(540, 92));
 		
 		// Icon
 		Image scaledIcon = userIcon.getScaledInstance(72, 72, Image.SCALE_DEFAULT);

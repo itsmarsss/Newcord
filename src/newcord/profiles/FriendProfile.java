@@ -7,7 +7,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import newcord.ResourceLoader;
+import newcord.newclasses.ResourceLoader;
 
 public class FriendProfile extends JPanel {
 	/**

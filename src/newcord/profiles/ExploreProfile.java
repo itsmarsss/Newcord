@@ -2,7 +2,7 @@ package newcord.profiles;
 
 import javax.swing.JLabel;
 
-import newcord.ResourceLoader;
+import newcord.newclasses.ResourceLoader;
 
 public class ExploreProfile extends JLabel {
 	/**

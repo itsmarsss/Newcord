@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import newcord.Newcord;
-import newcord.ResourceLoader;
-import newcord.newui.ScrollBarUI;
+import newcord.newclasses.ResourceLoader;
+import newcord.newclasses.ScrollBarUI;
 import newcord.profiles.ChannelProfile;
 import newcord.profiles.FriendProfile;
 
@@ -47,6 +47,19 @@ public class ChannelList extends JPanel {
 		
 		add(channelTopBarPanel);
 		
+		// Search
+		JLabel searchLabel = new JLabel("  Find or start a conversation");
+		
+			// Search Init
+		searchLabel.setOpaque(true);
+		searchLabel.setSize(440, 56);
+		searchLabel.setLocation(20, 25);
+		searchLabel.setBackground(new Color(32, 34, 37));
+		searchLabel.setForeground(new Color(163, 166, 170));
+		searchLabel.setFont(new Font("Whitney", Font.PLAIN, 25));
+		
+		channelTopBarPanel.add(searchLabel);
+		
 		// Channel Section
 		JPanel channelPanel = new JPanel();
 		channelScrollPane = new JScrollPane(channelPanel);
@@ -62,19 +75,6 @@ public class ChannelList extends JPanel {
 		channelScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(10, 0));
 		channelScrollPane.getHorizontalScrollBar().setPreferredSize(new Dimension(0, 0));
 		channelScrollPane.getVerticalScrollBar().setUI(new ScrollBarUI(new Color(47, 49, 54), new Color(32, 34, 37), false));
-
-		// Search
-		JLabel searchLabel = new JLabel("  Find or start a conversation");
-		
-			// Search Init
-		searchLabel.setOpaque(true);
-		searchLabel.setSize(440, 56);
-		searchLabel.setLocation(20, 25);
-		searchLabel.setBackground(new Color(32, 34, 37));
-		searchLabel.setForeground(new Color(114, 118, 125));
-		searchLabel.setFont(new Font("Whitney", Font.PLAIN, 25));
-		
-		channelTopBarPanel.add(searchLabel);
 		
 		// Add Channels
 		
@@ -86,7 +86,7 @@ public class ChannelList extends JPanel {
 		FriendProfile friendProfile = new FriendProfile();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		gbc.insets = new Insets(0, 10, 10, 1);
+		gbc.insets = new Insets(0, 25, 10, 1);
 		
 		channelPanel.add(friendProfile, gbc);
 		
@@ -97,7 +97,6 @@ public class ChannelList extends JPanel {
 		splitLabel.setFont(new Font("Whitney", Font.BOLD, 25));
 		gbc.gridx = 0;
 		gbc.gridy = 1;
-		gbc.insets = new Insets(0, 10, 10, 1);
 		
 		channelPanel.add(splitLabel, gbc);
 		
@@ -105,14 +104,14 @@ public class ChannelList extends JPanel {
 		LinkedList<ChannelProfile>channelProfiles = new LinkedList<ChannelProfile>();
 		int i = 2;
 
-		gbc.insets = new Insets(0, 10, 3, 1);
+		gbc.insets = new Insets(0, 25, 3, 1);
 		while(i < 32) {
 			ChannelProfile cp = new ChannelProfile(ResourceLoader.loader.getTempProfileIcon().getImage(), "ID");
 			channelProfiles.add(cp);
 			gbc.gridx = 0;
 			gbc.gridy = i;
 			if(i == 31) {
-				gbc.insets = new Insets(0, 10, 10, 1);
+				gbc.insets = new Insets(0, 25, 10, 1);
 			}
 			channelPanel.add(cp, gbc);
 			i++;
