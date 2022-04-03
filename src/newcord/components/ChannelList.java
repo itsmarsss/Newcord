@@ -37,6 +37,16 @@ public class ChannelList extends JPanel {
 		setBackground(new Color(47, 49, 54));
 		setSize(480, Newcord.getViewPanel().getHeight()-50);
 
+		// Channel TopBar
+		JPanel channelTopBarPanel = new JPanel();
+			// Channel TopBar Init
+		channelTopBarPanel.setLayout(null);
+		channelTopBarPanel.setSize(480, 106);
+		channelTopBarPanel.setBackground(new Color(47, 49, 54));
+		channelTopBarPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 4, 0, new Color(39,40,45)));
+		
+		add(channelTopBarPanel);
+		
 		// Channel Section
 		JPanel channelPanel = new JPanel();
 		channelScrollPane = new JScrollPane(channelPanel);
@@ -52,16 +62,6 @@ public class ChannelList extends JPanel {
 		channelScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(10, 0));
 		channelScrollPane.getHorizontalScrollBar().setPreferredSize(new Dimension(0, 0));
 		channelScrollPane.getVerticalScrollBar().setUI(new ScrollBarUI(new Color(47, 49, 54), new Color(32, 34, 37), false));
-
-		// Channel TopBar
-		JPanel channelTopBarPanel = new JPanel();
-			// Channel TopBar Init
-		channelTopBarPanel.setLayout(null);
-		channelTopBarPanel.setSize(480, 106);
-		channelTopBarPanel.setBackground(new Color(47, 49, 54));
-		channelTopBarPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 4, 0, new Color(39,40,45)));
-		
-		add(channelTopBarPanel);
 
 		// Search
 		JLabel searchLabel = new JLabel("  Find or start a conversation");

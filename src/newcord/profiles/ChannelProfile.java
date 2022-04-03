@@ -19,7 +19,7 @@ public class ChannelProfile extends JPanel {
 	public ChannelProfile(Image userIcon, String channelID) {
 		// Init
 		setLayout(null);
-		setBackground(new Color(47, 49, 54));
+		setBackground(null);
 		setPreferredSize(new Dimension(448, 92));
 		
 		// Icon
@@ -33,10 +33,10 @@ public class ChannelProfile extends JPanel {
 
 		// Username
 		JLabel usernameLabel = new JLabel("Place Holder");
-		usernameLabel.setForeground(new Color(142, 146, 151));
-		usernameLabel.setFont(new Font("Whitney", Font.PLAIN, 28));
 		usernameLabel.setSize(328, 40);
 		usernameLabel.setLocation(100, 12);
+		usernameLabel.setForeground(new Color(142, 146, 151));
+		usernameLabel.setFont(new Font("Whitney", Font.PLAIN, 28));
 		
 		add(usernameLabel);
 

@@ -78,7 +78,7 @@ public class ScrollBarUI extends BasicScrollBarUI {
 		g2.drawRoundRect(r.x, r.y, r.width, r.height, r.width, r.width);
 		g2.dispose();
 	}
-
+	
 	@Override
 	protected void setThumbBounds(int x, int y, int width, int height) {
 		super.setThumbBounds(x, y, width, height);

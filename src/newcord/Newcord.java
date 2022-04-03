@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 
 // Components
 import newcord.components.ChannelList;
+import newcord.components.ChatBoxArea;
 import newcord.components.ServerList;
 import newcord.components.WindowButtons;
 import newcord.newui.ScrollBarUI;
@@ -52,6 +53,7 @@ public class Newcord {
 	private static WindowButtons windowButtons;		// Other components...
 	private static ServerList serverList;
 	private static ChannelList channelList;
+	private static ChatBoxArea chatBoxArea;
 
 	// Newcord Default Constructor
 	Newcord() {
@@ -123,7 +125,7 @@ public class Newcord {
 
 		// Logo
 		JLabel logoLabel = new JLabel("Newcord");
-		logoLabel.setName("NewcordLabel");
+		logoLabel.setName("NewcordLogo");
 		logoLabel.setSize(130, 30);
 		logoLabel.setLocation(18, 10);
 		logoLabel.setForeground(new Color(114, 118, 125));
@@ -135,10 +137,12 @@ public class Newcord {
 		windowButtons = new WindowButtons();
 		serverList = new ServerList();
 		channelList = new ChannelList();
+		chatBoxArea = new ChatBoxArea();
 
 		viewPanel.add(windowButtons);
 		viewPanel.add(serverList);
 		viewPanel.add(channelList);
+		viewPanel.add(chatBoxArea);
 
 		for(Component i : viewPanel.getComponents())
 			System.out.println(i.getName());
@@ -180,6 +184,8 @@ public class Newcord {
 		
 		channelList.setSize(channelList.getWidth(), Newcord.viewPanel.getHeight()-50);
 		channelList.getChannelScrollPane().setSize(477, channelList.getHeight()-110);
+		
+		chatBoxArea.setSize(Newcord.getViewPanel().getWidth()-646, Newcord.getViewPanel().getHeight()-50);
 	}
 
 	public static JPanel getViewPanel() {
