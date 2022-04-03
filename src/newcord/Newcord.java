@@ -27,6 +27,7 @@ import newcord.components.ChatBoxArea;
 import newcord.components.ServerList;
 import newcord.components.WindowButtons;
 import newcord.newui.ScrollBarUI;
+import newcord.profiles.MessageProfile;
 
 // Newcord Class
 public class Newcord {
@@ -186,6 +187,13 @@ public class Newcord {
 		channelList.getChannelScrollPane().setSize(477, channelList.getHeight()-110);
 		
 		chatBoxArea.setSize(Newcord.getViewPanel().getWidth()-646, Newcord.getViewPanel().getHeight()-50);
+		chatBoxArea.getChatBoxTopBarPanel().setSize(chatBoxArea.getWidth(), 106);
+		chatBoxArea.getChatBoxScrollPane().setSize(chatBoxArea.getWidth()-395, chatBoxArea.getHeight()-106);
+		chatBoxArea.getMembersScrollPane().setSize(395, chatBoxArea.getHeight()-106);
+		chatBoxArea.getMembersScrollPane().setLocation(chatBoxArea.getChatBoxScrollPane().getWidth()+5, 106);
+		for(MessageProfile mp : chatBoxArea.getMessageProfiles()) {
+			mp.setPreferredSize(new Dimension(Newcord.getViewPanel().getWidth()-646, 100));
+		}
 	}
 
 	public static JPanel getViewPanel() {

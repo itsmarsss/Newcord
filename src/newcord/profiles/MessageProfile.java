@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import newcord.Newcord;
+
 public class MessageProfile extends JPanel {
 	/**
 	 * 
@@ -23,7 +25,7 @@ public class MessageProfile extends JPanel {
 		// Init
 		setLayout(null);
 		setBackground(null);
-		setPreferredSize(new Dimension(1000, 100));
+		setPreferredSize(new Dimension(Newcord.getViewPanel().getWidth()-646, 100));
 		
 		// Icon
 		Image scaledIcon = userIcon.getScaledInstance(80, 80, Image.SCALE_DEFAULT);
